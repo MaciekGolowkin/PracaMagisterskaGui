@@ -2,12 +2,12 @@
     <form>
       <div class="form-group">
             <div class="row">
-                <mat-form-field class="example-full-width">
-                    <mat-label>Nazwa obrazu</mat-label>
-                    <input matInput>
-                  </mat-form-field>
+              <mat-form-field class="example-full-width">
+                  <mat-label>Nazwa obrazu</mat-label>
+                  <input matInput>
+              </mat-form-field>
 
-            <mat-form-field>
+              <mat-form-field>
                 <mat-label>Data Od:</mat-label>
                 <input matInput [matDatepicker]="DataPoczatkowa" disabled>
                 <mat-datepicker-toggle matSuffix [for]="DataPoczatkowa"></mat-datepicker-toggle>
@@ -21,10 +21,7 @@
                 <mat-datepicker #dp4 disabled="false"></mat-datepicker>
               </mat-form-field>
 
-            <button class="btn btn-primary btn-lg">Filtruj</button>
-
-              
-                
+              <button class="btn btn-primary btn-lg" style="display:block; margin-left:auto; margin-right: 0;">Filtruj</button>
               </div>
     </div>
     </form>
