@@ -9,6 +9,7 @@ import { NavigationBarComponent } from './application-body/navigation-bar/naviga
 import { RegistryComponent } from './application-body/registry/registry.component';
 import { CryteriaComponent } from './application-body/registry/cryteria/cryteria.component';
 import { RowsResultComponent } from './application-body/registry/rows-result/rows-result.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { RowsResultComponent } from './application-body/registry/rows-result/row
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
