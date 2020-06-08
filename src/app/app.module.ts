@@ -44,6 +44,7 @@ import {MatTabsModule} from '@angular/material/tabs';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatTooltipModule} from '@angular/material/tooltip';
 import {MatTreeModule} from '@angular/material/tree';
+import { ImageOperationsComponent } from './application-body/image-operations/image-operations.component';
 
 @NgModule({
   declarations: [
@@ -53,7 +54,8 @@ import {MatTreeModule} from '@angular/material/tree';
     NavigationBarComponent,
     RegistryComponent,
     CryteriaComponent,
-    RowsResultComponent
+    RowsResultComponent,
+    ImageOperationsComponent
   ],
   imports: [
     BrowserModule,
