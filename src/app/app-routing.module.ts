@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { LoginComponent } from './login/login.component';
-import { ApplicationBodyComponent } from './application-body/application-body.component';
-import { ImageOperationsComponent } from './application-body/image-operations/image-operations.component';
+import { LoginComponent } from './Components/login/login.component';
+import { ApplicationBodyComponent } from './Components/application-body/application-body.component';
+import { ImageOperationsComponent } from './Components/application-body/image-operations/image-operations.component';
 
 const routes: Routes = [
   {path:"",component:LoginComponent},

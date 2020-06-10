@@ -1,5 +1,4 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-
 import { ApplicationBodyComponent } from './application-body.component';
 
 describe('ApplicationBodyComponent', () => {

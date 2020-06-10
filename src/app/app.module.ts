@@ -3,12 +3,12 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { LoginComponent } from './login/login.component';
-import { ApplicationBodyComponent } from './application-body/application-body.component';
-import { NavigationBarComponent } from './application-body/navigation-bar/navigation-bar.component';
-import { RegistryComponent } from './application-body/registry/registry.component';
-import { CryteriaComponent } from './application-body/registry/cryteria/cryteria.component';
-import { RowsResultComponent } from './application-body/registry/rows-result/rows-result.component';
+import { LoginComponent } from './Components/login/login.component';
+import { ApplicationBodyComponent } from './Components/application-body/application-body.component';
+import { NavigationBarComponent } from './Components/application-body/navigation-bar/navigation-bar.component';
+import { RegistryComponent } from './Components/application-body/registry/registry.component';
+import { CryteriaComponent } from './Components/application-body/registry/cryteria/cryteria.component';
+import { RowsResultComponent } from './Components/application-body/registry/rows-result/rows-result.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
 import {MatBadgeModule} from '@angular/material/badge';
@@ -44,7 +44,7 @@ import {MatTabsModule} from '@angular/material/tabs';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatTooltipModule} from '@angular/material/tooltip';
 import {MatTreeModule} from '@angular/material/tree';
-import { ImageOperationsComponent } from './application-body/image-operations/image-operations.component';
+import { ImageOperationsComponent } from './Components/application-body/image-operations/image-operations.component';
 
 @NgModule({
   declarations: [
