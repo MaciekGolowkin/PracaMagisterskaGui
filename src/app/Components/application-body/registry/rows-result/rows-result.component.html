@@ -1,10 +1,6 @@
 <div class="example-container mat-elevation-z8">
     <mat-table #table [dataSource]="dataSource">
   
-      <!--- Note that these columns can be defined in any order.
-            The actual rendered columns are set as a property on the row definition" -->
-  
-      <!-- Position Column -->
       <ng-container matColumnDef="position">
         <mat-header-cell *matHeaderCellDef> Numer </mat-header-cell>
         <mat-cell *matCellDef="let element"> {{element.position}} 
@@ -12,20 +8,16 @@
         </mat-cell>
       </ng-container>
   
-      <!-- Name Column -->
       <ng-container matColumnDef="title">
         <mat-header-cell *matHeaderCellDef> Tytuł </mat-header-cell>
         <mat-cell *matCellDef="let element" (click)="cellClicked(element)"> {{element.title}} </mat-cell>
       </ng-container>
   
-      <!-- Symbol Column -->
       <ng-container matColumnDef="dateOfUpload">
         <mat-header-cell *matHeaderCellDef> Data </mat-header-cell>
         <mat-cell *matCellDef="let element"> {{element.dateOfUpload | date:'mediumDate'}} </mat-cell>
       </ng-container>
   
-      <!-- The exapnded row contents-->
-      <!-- Expanded Content Column - The detail row is made up of this one column -->
       <ng-container matColumnDef="expandedDetail">
         <mat-cell *matCellDef="let detail"> 
             <form>
@@ -47,10 +39,13 @@
                       <option>Rozrost obszaru</option>
                   </select>
               </div>
-            <button routerLink="../home" class="btn btn-primary"> Modyfikuj </button>
-            <button (click)="deleteElement(clickedElement?.position)" class="btn btn-danger"> Usuń </button>
+              <div class="container">
+                <div class="vertical-center">
+                  <button routerLink="../home" class="btn btn-primary"> Modyfikuj </button>
+                  <button (click)="deleteElement(clickedElement?.position)" class="btn btn-danger"> Usuń </button>
+                </div>
+              </div>
           </form>
-            
         </mat-cell>
       </ng-container>
       <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
@@ -66,8 +61,3 @@
   
     </mat-table>
   </div>
-  
-  
-  <!-- Copyright 2017 Google Inc. All Rights Reserved.
-      Use of this source code is governed by an MIT-style license that
-      can be found in the LICENSE file at http://angular.io/license -->
