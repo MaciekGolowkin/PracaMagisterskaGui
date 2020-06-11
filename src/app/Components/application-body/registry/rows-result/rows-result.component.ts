@@ -35,8 +35,8 @@ isExpansionDetailRow = (i: number, row: Object) => row.hasOwnProperty('detailRow
   }
 
   cellClicked(element:ImageRecord) {
-    this.clickedElement.title=element.title;
-    console.log(element.description + ' cell clicked');
+    this.clickedElement =  ELEMENT_DATA.find(x => x.position == element.position);
+    console.log(this.clickedElement);
   }
 
 }
