@@ -37,7 +37,8 @@
                   <label for="DescribeTextArea">Opis</label>
                   <textarea value={{clickedElement?.description}} class="form-control" id="DescribeTextArea" rows="3"></textarea>
                 </div>
-              <img class="img-fluid" src="/assets/Sample.JPG"/>  
+              <img class="img-fluid" src="/assets/Sample.JPG"/>
+              <img class="img-fluid" src="/assets/image.jpg"/>  
               <div class="form-group">
                   <label for="inputState">Rodzaj przetwarzania</label>
                   <select id="inputState" class="form-control">
@@ -46,16 +47,13 @@
                       <option>Rozrost obszaru</option>
                   </select>
               </div>
-              <button routerLink="../home" class="btn btn-primary"> Modyfikuj </button>
-              <button routerLink="../home" class="btn btn-danger"> Usuń </button>
+            <button routerLink="../home" class="btn btn-primary"> Modyfikuj </button>
+            <button (click)="deleteElement(clickedElement?.position)" class="btn btn-danger"> Usuń </button>
           </form>
+            
         </mat-cell>
-
-
       </ng-container>
-  
       <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-      <!-- <mat-row (click)="test()" *matRowDef="let row; columns: displayedColumns;"></mat-row> -->
       <mat-row *matRowDef="let row; columns: displayedColumns;"
                
               class="element-row" 

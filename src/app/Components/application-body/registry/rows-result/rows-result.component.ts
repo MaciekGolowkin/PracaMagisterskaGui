@@ -39,6 +39,10 @@ isExpansionDetailRow = (i: number, row: Object) => row.hasOwnProperty('detailRow
     console.log(this.clickedElement);
   }
 
+  deleteElement(id:number) {
+    ELEMENT_DATA.splice(id, 1);
+  }
+
 }
 
 export interface ImageRecord {
