@@ -23,8 +23,10 @@ export class RowsResultComponent implements OnInit {
 
   ngOnInit(): void {
   }
-  displayedColumns = ['position', 'name', 'weight', 'symbol'];
+  displayedColumns = ['position', 'title', 'dateOfUpload'];
   dataSource = new ExampleDataSource();
+
+  clickedElement:ImageRecord={position: 1, title: 'Zdjecie 1', dateOfUpload: new Date("2019-01-16")};
 
 isExpansionDetailRow = (i: number, row: Object) => row.hasOwnProperty('detailRow');
   expandedElement: any;
@@ -32,42 +34,43 @@ isExpansionDetailRow = (i: number, row: Object) => row.hasOwnProperty('detailRow
     console.log('test');
   }
 
-  cellClicked(element) {
-    console.log(element.name + ' cell clicked');
+  cellClicked(element:ImageRecord) {
+    this.clickedElement.title=element.title;
+    console.log(element.description + ' cell clicked');
   }
 
 }
 
-export interface Element {
-  name: string;
+export interface ImageRecord {
+  title: string;
   position: number;
-  weight: number;
-  symbol: string;
+  dateOfUpload:Date;
+  description?:string;
 }
 
   
 
-const ELEMENT_DATA: Element[] = [
-  {position: 1, name: 'Hydrogen', weight: 1.0079, symbol: 'H'},
-  {position: 2, name: 'Helium', weight: 4.0026, symbol: 'He'},
-  {position: 3, name: 'Lithium', weight: 6.941, symbol: 'Li'},
-  {position: 4, name: 'Beryllium', weight: 9.0122, symbol: 'Be'},
-  {position: 5, name: 'Boron', weight: 10.811, symbol: 'B'},
-  {position: 6, name: 'Carbon', weight: 12.0107, symbol: 'C'},
-  {position: 7, name: 'Nitrogen', weight: 14.0067, symbol: 'N'},
-  {position: 8, name: 'Oxygen', weight: 15.9994, symbol: 'O'},
-  {position: 9, name: 'Fluorine', weight: 18.9984, symbol: 'F'},
-  {position: 10, name: 'Neon', weight: 20.1797, symbol: 'Ne'},
-  {position: 11, name: 'Sodium', weight: 22.9897, symbol: 'Na'},
-  {position: 12, name: 'Magnesium', weight: 24.305, symbol: 'Mg'},
-  {position: 13, name: 'Aluminum', weight: 26.9815, symbol: 'Al'},
-  {position: 14, name: 'Silicon', weight: 28.0855, symbol: 'Si'},
-  {position: 15, name: 'Phosphorus', weight: 30.9738, symbol: 'P'},
-  {position: 16, name: 'Sulfur', weight: 32.065, symbol: 'S'},
-  {position: 17, name: 'Chlorine', weight: 35.453, symbol: 'Cl'},
-  {position: 18, name: 'Argon', weight: 39.948, symbol: 'Ar'},
-  {position: 19, name: 'Potassium', weight: 39.0983, symbol: 'K'},
-  {position: 20, name: 'Calcium', weight: 40.078, symbol: 'Ca'},
+const ELEMENT_DATA: ImageRecord[] = [
+  {position: 1, title: 'Zdjecie 1', dateOfUpload: new Date("2019-01-16"),description:"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,"},
+  {position: 2, title: 'Zdjecie 2', dateOfUpload: new Date("2019-01-17"),description:"Opissssssssss,"},
+  {position: 3, title: 'Zdjecie aaa', dateOfUpload: new Date("2019-01-18"),description:"Halo halo"},
+  {position: 4, title: 'Zdjecie Medyczne', dateOfUpload: new Date("2019-01-19"),description:"Loreaasdsdadmmy text of the assadas industry's standard dummy text ever since the 1500s,"},
+  {position: 5, title: 'Zdjecie Medyczne Bardzo', dateOfUpload: new Date("2019-01-20")},
+  {position: 6, title: 'Zdjecie obrazo', dateOfUpload: new Date("2019-01-21")},
+  {position: 7, title: 'ziarniaki', dateOfUpload: new Date("2019-01-21")},
+  {position: 8, title: 'Diplococcus', dateOfUpload: new Date("2019-01-22")},
+  {position: 9, title: 'Tetracoccus', dateOfUpload: new Date("2019-01-23")},
+  {position: 10, title: 'Streptococcus', dateOfUpload: new Date("2019-01-24")},
+  {position: 11, title: 'Staphylococcus', dateOfUpload: new Date("2019-01-25")},
+  {position: 12, title: 'Sarcina', dateOfUpload: new Date("2019-08-18")},
+  {position: 13, title: 'Bacterium', dateOfUpload: new Date("2019-07-18")},
+  {position: 14, title: 'Silicon', dateOfUpload: new Date("2019-06-18")},
+  {position: 15, title: 'Bacillus', dateOfUpload: new Date("2019-05-18")},
+  {position: 16, title: 'Corynebacterium', dateOfUpload: new Date("2019-04-18")},
+  {position: 17, title: 'Vibrio', dateOfUpload: new Date("2019-03-18")},
+  {position: 18, title: 'Spirillum', dateOfUpload: new Date("2019-02-18")},
+  {position: 19, title: 'Spirochaeta',dateOfUpload: new Date("2019-07-18")},
+  {position: 20, title: 'Actinomyces',dateOfUpload: new Date("2019-07-19")},
 ];
 
 export class ExampleDataSource extends DataSource<any> {

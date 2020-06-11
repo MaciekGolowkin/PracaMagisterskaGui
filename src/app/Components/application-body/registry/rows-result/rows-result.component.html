@@ -6,37 +6,52 @@
   
       <!-- Position Column -->
       <ng-container matColumnDef="position">
-        <mat-header-cell *matHeaderCellDef> No. </mat-header-cell>
+        <mat-header-cell *matHeaderCellDef> Numer </mat-header-cell>
         <mat-cell *matCellDef="let element"> {{element.position}} 
   
         </mat-cell>
       </ng-container>
   
       <!-- Name Column -->
-      <ng-container matColumnDef="name">
-        <mat-header-cell *matHeaderCellDef> Name </mat-header-cell>
-        <mat-cell *matCellDef="let element" (click)="cellClicked(element)"> {{element.name}} </mat-cell>
-      </ng-container>
-  
-      <!-- Weight Column -->
-      <ng-container matColumnDef="weight">
-        <mat-header-cell *matHeaderCellDef> Weight </mat-header-cell>
-        <mat-cell *matCellDef="let element"> {{element.weight}} 333</mat-cell>
+      <ng-container matColumnDef="title">
+        <mat-header-cell *matHeaderCellDef> Tytuł </mat-header-cell>
+        <mat-cell *matCellDef="let element" (click)="cellClicked(element)"> {{element.title}} </mat-cell>
       </ng-container>
   
       <!-- Symbol Column -->
-      <ng-container matColumnDef="symbol">
-        <mat-header-cell *matHeaderCellDef> Symbol </mat-header-cell>
-        <mat-cell *matCellDef="let element"> {{element.symbol}} </mat-cell>
+      <ng-container matColumnDef="dateOfUpload">
+        <mat-header-cell *matHeaderCellDef> Data </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.dateOfUpload | date:'mediumDate'}} </mat-cell>
       </ng-container>
   
       <!-- The exapnded row contents-->
       <!-- Expanded Content Column - The detail row is made up of this one column -->
       <ng-container matColumnDef="expandedDetail">
         <mat-cell *matCellDef="let detail"> 
-            <button type="button" class="btn btn-secondary">Szczegóły</button>
-            <button type="button" class="btn btn-danger">Usuń</button>
+            <form>
+              <div class="form-group">
+                  <label >Tytuł Obrazu</label>
+                  <input value={{clickedElement?.title}} type="text" formControlName="TitleInput" class="form-control"/>
+              </div>
+              <div class="form-group">
+                  <label for="DescribeTextArea">Opis</label>
+                  <textarea value={{clickedElement?.description}} class="form-control" id="DescribeTextArea" rows="3"></textarea>
+                  {{clickedElement?.description}}
+                </div>
+              <div class="form-group">
+                  <label for="inputState">Rodzaj przetwarzania</label>
+                  <select id="inputState" class="form-control">
+                      <option selected>Brak</option>
+                      <option>Progowanie</option>
+                      <option>Rozrost obszaru</option>
+                  </select>
+              </div>
+              <button routerLink="../home" class="btn btn-primary"> Modyfikuj </button>
+              <button routerLink="../home" class="btn btn-danger"> Usuń </button>
+          </form>
         </mat-cell>
+
+
       </ng-container>
   
       <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
