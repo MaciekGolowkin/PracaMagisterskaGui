@@ -46,6 +46,7 @@ import {MatTooltipModule} from '@angular/material/tooltip';
 import {MatTreeModule} from '@angular/material/tree';
 import { ImageOperationsComponent } from './Components/application-body/image-operations/image-operations.component';
 import { UserInfoComponent } from './Components/application-body/user-info/user-info.component';
+import { RegisterComponent } from './Components/register/register.component';
 
 @NgModule({
   declarations: [
@@ -57,7 +58,8 @@ import { UserInfoComponent } from './Components/application-body/user-info/user-
     CryteriaComponent,
     RowsResultComponent,
     ImageOperationsComponent,
-    UserInfoComponent
+    UserInfoComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,
