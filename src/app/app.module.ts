@@ -47,6 +47,7 @@ import {MatTreeModule} from '@angular/material/tree';
 import { ImageOperationsComponent } from './Components/application-body/image-operations/image-operations.component';
 import { UserInfoComponent } from './Components/application-body/user-info/user-info.component';
 import { RegisterComponent } from './Components/register/register.component';
+import { ImageCropperModule } from 'ngx-image-cropper';
 
 @NgModule({
   declarations: [
@@ -100,7 +101,8 @@ import { RegisterComponent } from './Components/register/register.component';
     MatTreeModule,
     AppRoutingModule,
     HttpClientModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    ImageCropperModule
   ],
   providers: [],
   bootstrap: [AppComponent]
