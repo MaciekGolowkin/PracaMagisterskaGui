@@ -1,63 +1,65 @@
 <div class="example-container mat-elevation-z8">
-    <mat-table #table [dataSource]="dataSource">
-  
-      <ng-container matColumnDef="position">
-        <mat-header-cell *matHeaderCellDef> Numer </mat-header-cell>
-        <mat-cell *matCellDef="let element"> {{element.position}} 
-  
-        </mat-cell>
-      </ng-container>
-  
-      <ng-container matColumnDef="title">
-        <mat-header-cell *matHeaderCellDef> Tytuł </mat-header-cell>
-        <mat-cell *matCellDef="let element" (click)="cellClicked(element)"> {{element.title}} </mat-cell>
-      </ng-container>
-  
-      <ng-container matColumnDef="dateOfUpload">
-        <mat-header-cell *matHeaderCellDef> Data </mat-header-cell>
-        <mat-cell *matCellDef="let element"> {{element.dateOfUpload | date:'mediumDate'}} </mat-cell>
-      </ng-container>
-  
-      <ng-container matColumnDef="expandedDetail">
-        <mat-cell *matCellDef="let detail"> 
-            <form>
-              <div class="form-group">
-                  <label >Tytuł Obrazu</label>
-                  <input value={{clickedElement?.title}} type="text" formControlName="TitleInput" class="form-control"/>
-              </div>
-              <div class="form-group">
-                  <label for="DescribeTextArea">Opis</label>
-                  <textarea value={{clickedElement?.description}} class="form-control" id="DescribeTextArea" rows="3"></textarea>
-                </div>
-              <img class="img-fluid" src="/assets/Sample.JPG"/>
-              <img class="img-fluid" src="/assets/image.jpg"/>  
-              <div class="form-group">
-                  <label for="inputState">Rodzaj przetwarzania</label>
-                  <select id="inputState" class="form-control">
-                      <option selected>Brak</option>
-                      <option>Progowanie</option>
-                      <option>Rozrost obszaru</option>
-                  </select>
-              </div>
-              <div class="container">
-                <div class="vertical-center">
-                  <button routerLink="../home" class="btn btn-primary"> Modyfikuj </button>
-                  <button (click)="deleteElement(clickedElement?.position)" class="btn btn-danger"> Usuń </button>
-                </div>
-              </div>
-          </form>
-        </mat-cell>
-      </ng-container>
-      <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-      <mat-row *matRowDef="let row; columns: displayedColumns;"
-               
-              class="element-row" 
-              [class.expanded]="expandedElement == row"
-              (click)="expandedElement = row"></mat-row>
-      <mat-row *matRowDef="let row; columns: ['expandedDetail']; when: isExpansionDetailRow"
-              [@detailExpand]="row.element == expandedElement ? 'expanded' : 'collapsed'"
-              style="overflow: hidden"> 
-      </mat-row>
-  
-    </mat-table>
-  </div>
+  <mat-table #table [dataSource]="dataSource">
+
+    <ng-container matColumnDef="position">
+      <mat-header-cell *matHeaderCellDef> Numer </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.position}}
+
+      </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="title">
+      <mat-header-cell *matHeaderCellDef> Tytuł </mat-header-cell>
+      <mat-cell *matCellDef="let element" (click)="cellClicked(element)"> {{element.title}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="dateOfUpload">
+      <mat-header-cell *matHeaderCellDef> Data </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.dateOfUpload | date:'mediumDate'}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="expandedDetail">
+      <mat-cell *matCellDef="let detail">
+        <form>
+          <div class="form-group">
+            <label>Tytuł Obrazu</label>
+            <input value={{clickedElement?.title}} type="text" formControlName="TitleInput" class="form-control" />
+          </div>
+          <div class="form-group">
+            <label for="DescribeTextArea">Opis</label>
+            <textarea value={{clickedElement?.description}} class="form-control" id="DescribeTextArea"
+              rows="3"></textarea>
+          </div>
+          <img #myImg id="myImg" (click)="imageOnClick()" src="/assets/Sample.JPG" alt="Snow" style="width:100%;max-width:300px">
+          <div #myModal id="myModal" class="modal" [style.display]="styleOfModal">
+            <span (click)="spanExitClick()" class="close">&times;</span>
+            <img id="img01" [src]="myImg.src" class="modal-content" #img01>
+            <div #caption id="caption"></div>
+          </div>
+          <img class="img-fluid" src="/assets/image.jpg" />
+          <div class="form-group">
+            <label for="inputState">Rodzaj przetwarzania</label>
+            <select id="inputState" class="form-control">
+              <option selected>Brak</option>
+              <option>Progowanie</option>
+              <option>Rozrost obszaru</option>
+            </select>
+          </div>
+          <div class="container">
+            <div class="vertical-center">
+              <button routerLink="../home" class="btn btn-primary"> Modyfikuj </button>
+              <button (click)="deleteElement(clickedElement?.position)" class="btn btn-danger"> Usuń </button>
+            </div>
+          </div>
+        </form>
+      </mat-cell>
+    </ng-container>
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;" class="element-row"
+      [class.expanded]="expandedElement == row" (click)="expandedElement = row"></mat-row>
+    <mat-row *matRowDef="let row; columns: ['expandedDetail']; when: isExpansionDetailRow"
+      [@detailExpand]="row.element == expandedElement ? 'expanded' : 'collapsed'" style="overflow: hidden">
+    </mat-row>
+
+  </mat-table>
+</div>

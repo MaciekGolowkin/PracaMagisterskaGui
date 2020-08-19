@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { ViewChild,Component, OnInit, ElementRef } from '@angular/core';
 import { DataSource } from '@angular/cdk/collections';
 import { Observable } from 'rxjs';
 import { of } from 'rxjs';
@@ -18,14 +18,14 @@ import { animate, state, style, transition, trigger } from '@angular/animations'
   ]
 })
 export class RowsResultComponent implements OnInit {
-
   constructor() { }
 
   ngOnInit(): void {
   }
+
   displayedColumns = ['position', 'title', 'dateOfUpload'];
   dataSource = new ExampleDataSource();
-
+  styleOfModal:string;
   clickedElement:ImageRecord={position: 1, title: 'Zdjecie 1', dateOfUpload: new Date("2019-01-16")};
 
 isExpansionDetailRow = (i: number, row: Object) => row.hasOwnProperty('detailRow');
@@ -34,15 +34,21 @@ isExpansionDetailRow = (i: number, row: Object) => row.hasOwnProperty('detailRow
     console.log('test');
   }
 
+  imageOnClick(){
+    this.styleOfModal="block";
+  }
+
+  spanExitClick(){
+    this.styleOfModal="none";
+  }
+
   cellClicked(element:ImageRecord) {
     this.clickedElement =  ELEMENT_DATA.find(x => x.position == element.position);
-    console.log(this.clickedElement);
   }
 
   deleteElement(id:number) {
     ELEMENT_DATA.splice(id, 1);
   }
-
 }
 
 export interface ImageRecord {
@@ -82,7 +88,6 @@ export class ExampleDataSource extends DataSource<any> {
   connect(): Observable<Element[]> {
     const rows = [];
     ELEMENT_DATA.forEach(element => rows.push(element, {detailRow: true, element }));
-    console.log(rows);
     return of(rows);
   }
 
