@@ -2,7 +2,7 @@
     <div class="card">
         <h2 class="card-header">Zarejestruj</h2>
         <div class="card-body">
-        <form [formGroup]="service.formModel" (submit)="onSubmit">
+        <form [formGroup]="service.formModel" (submit)="onSubmit()">
             <div class="form-group required">
                 <label for="UserName">Login</label>
                 <input type="text" class="form-control" formControlName="UserName"/>

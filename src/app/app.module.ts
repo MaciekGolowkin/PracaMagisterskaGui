@@ -51,6 +51,7 @@ import { ImageCropperModule } from 'ngx-image-cropper';
 import { ReactiveFormsModule } from '@angular/forms';
 import { FormsModule } from '@angular/forms';
 import { UserService } from './Services/Shared/user.service';
+import { ToastrModule } from 'ngx-toastr';
 
 
 @NgModule({
@@ -109,6 +110,7 @@ import { UserService } from './Services/Shared/user.service';
     ImageCropperModule,
     ReactiveFormsModule,
     FormsModule,
+    ToastrModule.forRoot()
   ],
   providers: [UserService],
   bootstrap: [AppComponent]
