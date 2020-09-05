@@ -52,6 +52,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { FormsModule } from '@angular/forms';
 import { UserService } from './Services/Shared/user.service';
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -107,7 +108,7 @@ import { UserService } from './Services/Shared/user.service';
     BrowserAnimationsModule,
     ImageCropperModule,
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
   ],
   providers: [UserService],
   bootstrap: [AppComponent]

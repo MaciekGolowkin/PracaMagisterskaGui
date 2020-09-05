@@ -2,7 +2,7 @@
     <div class="card">
         <h2 class="card-header">Zarejestruj</h2>
         <div class="card-body">
-        <form [formGroup]="service.formModel">
+        <form [formGroup]="service.formModel" (submit)="onSubmit">
             <div class="form-group required">
                 <label for="UserName">Login</label>
                 <input type="text" class="form-control" formControlName="UserName"/>
@@ -18,7 +18,7 @@
                 <input type="text" class="form-control" formControlName="FullName" />
             </div>
             <div formGroupName="Passwords">
-                <div class="form-group required">
+                <div class="form-group required"> 
                     <label for="password">Hasło</label>
                     <input type="password" class="form-control" formControlName="Password" />
                     <label class="text-danger" *ngIf="service.formModel.get('Passwords.Password').touched && service.formModel.get('Passwords.Password').errors?.required">Pole obowiązkowe.</label>
@@ -30,7 +30,7 @@
                   </div>
             </div>  
             <div class="form-row">
-                <button class="btn btn-primary">
+                <button type="submit" class="btn btn-primary" [disabled]='!service.formModel.valid'>
                     Ok
                 </button>
                 <a routerLink="/login" class="btn btn-link">Anuluj</a>
