@@ -2,23 +2,34 @@
     <div class="card">
         <h2 class="card-header">Zarejestruj</h2>
         <div class="card-body">
-        <form>
-            <div class="form-group">
-                <label for="firstName">Imię</label>
-                <input type="text" class="form-control"/>
+        <form >
+            <div class="form-group required">
+                <label for="login">Login</label>
+                <input type="text" class="form-control" formControlName="UserName"/>
+                <label for="text-danger" *ngIf="service.formModel.get('UserName').touched && service.formModel.get('UserName').errors?.required">Wymagany login</label>
             </div>
             <div class="form-group">
-                <label for="lastName">Nazwisko</label>
-                <input type="text"  class="form-control"/>
+                <label for="Email">Email</label>
+                <input type="text"  class="form-control" formControlName="Email"/>
+                <label for="text-danger" *ngIf="service.formModel.get('Email').touched && service.formModel.get('Email').errors?.email">Niepoprawny format</label>
             </div>
             <div class="form-group">
-                <label for="username">Login</label>
-                <input type="text" class="form-control"  />
+                <label for="FullName">Nazwa Uzytkownika</label>
+                <input type="text" class="form-control" formControlName="FullName" />
             </div>
-            <div class="form-group">
-                <label for="password">Hasło</label>
-                <input type="password" class="form-control"  />
+            <div formGroupName="Passwords required">   
+                <div class="form-group">
+                    <label for="password">Hasło</label>
+                    <input type="password" class="form-control" formControlName="Password" />
+                    <label for="text-danger" *ngIf="service.formModel.get('Passwords.Password').touched && service.formModel.get('Passwords.Password').errors?.required">Wymagane hasło</label>
+                </div>
+                <div class="form-group">
+                    <label for="confirmPassword">Powtórz hasło</label>
+                    <input type="password" class="form-control" formControlName="ConfirmPassword" />
+                    <label for="text-danger" *ngIf="service.formModel.get('Passwords.ConfirmPassword').touched && service.formModel.get('Passwords.ConfirmPassword').errors?.required">Wymagane powtórzenie hasła</label>
+                </div>
             </div>
+
             <div class="form-group">
                 <button class="btn btn-primary">
                     Ok
