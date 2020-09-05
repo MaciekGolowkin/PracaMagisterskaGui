@@ -48,6 +48,9 @@ import { ImageOperationsComponent } from './Components/application-body/image-op
 import { UserInfoComponent } from './Components/application-body/user-info/user-info.component';
 import { RegisterComponent } from './Components/register/register.component';
 import { ImageCropperModule } from 'ngx-image-cropper';
+import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule } from '@angular/forms';
+import { UserService } from './Services/Shared/user.service';
 
 @NgModule({
   declarations: [
@@ -102,9 +105,11 @@ import { ImageCropperModule } from 'ngx-image-cropper';
     AppRoutingModule,
     HttpClientModule,
     BrowserAnimationsModule,
-    ImageCropperModule
+    ImageCropperModule,
+    ReactiveFormsModule,
+    FormsModule
   ],
-  providers: [],
+  providers: [UserService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
