@@ -41,4 +41,12 @@ export class UserService {
     };
     return this.httpClient.post(this.BaseURI + '/ApplicationUser/Register', body);
   }
+
+  login(formData) {
+    return this.httpClient.post(this.BaseURI + '/ApplicationUser/Login', formData);
+  }
+
+  getUserProfile() {
+    return this.httpClient.get(this.BaseURI + '/UserProfile');
+  }
 }

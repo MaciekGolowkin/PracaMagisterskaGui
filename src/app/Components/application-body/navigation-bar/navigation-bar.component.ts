@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { UserService } from 'src/app/Services/Shared/user.service';
 
 @Component({
   selector: 'app-navigation-bar',
@@ -7,9 +9,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NavigationBarComponent implements OnInit {
 
-  constructor() { }
+  userDetails;
+  constructor(private router: Router, private service: UserService) { }
 
-  ngOnInit(): void {
+  ngOnInit() {
+  }
+
+  onLogout() {
+    localStorage.removeItem('token');
+    this.router.navigate(['/']);
   }
 
 }
