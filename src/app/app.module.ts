@@ -53,6 +53,8 @@ import { FormsModule } from '@angular/forms';
 import { UserService } from './Services/Shared/user.service';
 import { ToastrModule } from 'ngx-toastr';
 import { AuthInterceptor } from './auth/auth.interceptor';
+import 'console.image';
+import { UploadComponent } from './Components/application-body/image-operations/upload/upload.component'
 
 
 @NgModule({
@@ -66,7 +68,8 @@ import { AuthInterceptor } from './auth/auth.interceptor';
     RowsResultComponent,
     ImageOperationsComponent,
     UserInfoComponent,
-    RegisterComponent
+    RegisterComponent,
+    UploadComponent
   ],
   imports: [
     BrowserModule,
@@ -111,7 +114,7 @@ import { AuthInterceptor } from './auth/auth.interceptor';
     ImageCropperModule,
     ReactiveFormsModule,
     FormsModule,
-    ToastrModule.forRoot()
+    ToastrModule.forRoot(),
   ],
   providers: [UserService,{
     provide: HTTP_INTERCEPTORS,
