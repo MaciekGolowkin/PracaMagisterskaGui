@@ -26,7 +26,7 @@ export class RowsResultComponent implements OnInit {
   displayedColumns = ['position', 'title', 'dateOfUpload'];
   dataSource = new ExampleDataSource();
   styleOfModal:string;
-  clickedElement:ImageRecord={position: 1, title: 'Zdjecie 1', dateOfUpload: new Date("2019-01-16")};
+  clickedElement:ImageRecord;
 
 isExpansionDetailRow = (i: number, row: Object) => row.hasOwnProperty('detailRow');
   expandedElement: any;

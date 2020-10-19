@@ -3,7 +3,7 @@
 
     <ng-container matColumnDef="position">
       <mat-header-cell *matHeaderCellDef> Numer </mat-header-cell>
-      <mat-cell *matCellDef="let element"> {{element.position}}
+      <mat-cell *matCellDef="let element" (click)="cellClicked(element)" > {{element.position}}
 
       </mat-cell>
     </ng-container>
@@ -15,7 +15,7 @@
 
     <ng-container matColumnDef="dateOfUpload">
       <mat-header-cell *matHeaderCellDef> Data </mat-header-cell>
-      <mat-cell *matCellDef="let element"> {{element.dateOfUpload | date:'mediumDate'}} </mat-cell>
+      <mat-cell *matCellDef="let element" (click)="cellClicked(element)" > {{element.dateOfUpload | date:'mediumDate'}} </mat-cell>
     </ng-container>
 
     <ng-container matColumnDef="expandedDetail">
@@ -23,7 +23,7 @@
         <form>
           <div class="form-group">
             <label>Tytuł Obrazu</label>
-            <input value={{clickedElement?.title}} type="text" formControlName="TitleInput" class="form-control" />
+            <input value={{clickedElement?.title}} type="text" class="form-control" />
           </div>
           <div class="form-group">
             <label for="DescribeTextArea">Opis</label>
