@@ -8,6 +8,7 @@ import { DomSanitizer } from '@angular/platform-browser';
 import { map } from 'rxjs/operators';
 import { ImageModel } from 'src/app/Models/ImageModel';
 import { ImageService } from 'src/app/Services/image.service';
+import { ImageRecord } from 'src/app/Models/ImageRecord';
 
 
 @Component({
@@ -26,17 +27,17 @@ export class RowsResultComponent implements OnInit {
   constructor(private http: HttpClient,private imageService: ImageService) { }
 
   async ngOnInit() {
-
+    
     this.listOfImages= await this.imageService.GetArrayOfImages();
     console.log(this.listOfImages);
 
   }
   xa:any;
-  listOfImages:ImageModel[];
+  listOfImages:ImageRecord[];
   displayedColumns = ['position', 'title', 'dateOfUpload'];
   dataSource = new ExampleDataSource();
   styleOfModal:string;
-  clickedElement:ImageRecord;
+  clickedElement:ImageRecordTest;
   errorMessage:string
   thumbnail;
 
@@ -54,7 +55,7 @@ isExpansionDetailRow = (i: number, row: Object) => row.hasOwnProperty('detailRow
     this.styleOfModal="none";
   }
 
-  cellClicked(element:ImageRecord) {
+  cellClicked(element:ImageRecordTest) {
     this.clickedElement =  ELEMENT_DATA.find(x => x.position == element.position);
   }
 
@@ -63,14 +64,14 @@ isExpansionDetailRow = (i: number, row: Object) => row.hasOwnProperty('detailRow
   }
 }
 
-export interface ImageRecord {
+export interface ImageRecordTest {
   title: string;
   position: number;
   dateOfUpload?:Date;
   description?:string;
 }
 
-const ELEMENT_DATA: ImageRecord[] = [
+const ELEMENT_DATA: ImageRecordTest[] = [
   {position: 1, title: 'Zdjecie 1', dateOfUpload: new Date("2019-01-16"),description:"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,"},
   {position: 2, title: 'Zdjecie 2', dateOfUpload: new Date("2019-01-17"),description:"Opissssssssss,"},
   {position: 3, title: 'Zdjecie aaa', dateOfUpload: new Date("2019-01-18"),description:"Halo halo"},

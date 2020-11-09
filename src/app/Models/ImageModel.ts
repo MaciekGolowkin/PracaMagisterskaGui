@@ -4,6 +4,6 @@ export class ImageModel {
     public description?:string;
     public TypeOfProcessing:string;
     public Length :number;
-    public  Width :number;
+    public Width :number;
     constructor() {}
   }
