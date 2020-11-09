@@ -1,8 +1,13 @@
-import { ViewChild,Component, OnInit, ElementRef } from '@angular/core';
+import { ViewChild,Component, OnInit, ElementRef, ɵConsole } from '@angular/core';
 import { DataSource } from '@angular/cdk/collections';
-import { Observable } from 'rxjs';
+import { from, Observable } from 'rxjs';
 import { of } from 'rxjs';
 import { animate, state, style, transition, trigger } from '@angular/animations';
+import { HttpClient } from '@angular/common/http';
+import { DomSanitizer } from '@angular/platform-browser';
+import { map } from 'rxjs/operators';
+import { ImageModel } from 'src/app/Models/ImageModel';
+import { ImageService } from 'src/app/Services/image.service';
 
 
 @Component({
@@ -18,15 +23,22 @@ import { animate, state, style, transition, trigger } from '@angular/animations'
   ]
 })
 export class RowsResultComponent implements OnInit {
-  constructor() { }
+  constructor(private http: HttpClient,private imageService: ImageService) { }
 
-  ngOnInit(): void {
+  async ngOnInit() {
+
+    this.listOfImages= await this.imageService.GetArrayOfImages();
+    console.log(this.listOfImages);
+
   }
-
+  xa:any;
+  listOfImages:ImageModel[];
   displayedColumns = ['position', 'title', 'dateOfUpload'];
   dataSource = new ExampleDataSource();
   styleOfModal:string;
   clickedElement:ImageRecord;
+  errorMessage:string
+  thumbnail;
 
 isExpansionDetailRow = (i: number, row: Object) => row.hasOwnProperty('detailRow');
   expandedElement: any;
@@ -54,11 +66,9 @@ isExpansionDetailRow = (i: number, row: Object) => row.hasOwnProperty('detailRow
 export interface ImageRecord {
   title: string;
   position: number;
-  dateOfUpload:Date;
+  dateOfUpload?:Date;
   description?:string;
 }
-
-  
 
 const ELEMENT_DATA: ImageRecord[] = [
   {position: 1, title: 'Zdjecie 1', dateOfUpload: new Date("2019-01-16"),description:"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,"},
