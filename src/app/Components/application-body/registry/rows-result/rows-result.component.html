@@ -25,7 +25,7 @@
             <textarea value={{clickedElement?.description}} class="form-control" id="DescribeTextArea"
               rows="3"></textarea>
           </div>
-          <img #myImg id="myImg" (click)="imageOnClick()" src={{clickedElement.imgPath}} alt="Snow" style="width:100%;max-width:300px">
+          <img #myImg id="myImg" (click)="imageOnClick()" src={{clickedElement?.imgPath}} alt="Snow" style="width:100%;max-width:300px">
           <div #myModal id="myModal" class="modal" [style.display]="styleOfModal">
             <span (click)="spanExitClick()" class="close">&times;</span>
             <img id="img01" [src]="myImg.src" class="modal-content" #img01>

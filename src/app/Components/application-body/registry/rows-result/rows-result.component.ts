@@ -24,19 +24,13 @@ export class RowsResultComponent implements OnInit {
   async ngOnInit() {
     this.listOfImages= await this.imageService.GetArrayOfImages();
     this.dataSource= new MatDataSource(this.listOfImages);
-    // this.dataSource.conn
   }
-  xa:any;
   listOfImages:ImageRecord[];
-  rows=[];
-  // displayedColumns = ['position', 'name', 'dateOfUpload'];
   displayedColumns = ['position', 'name'];
-  // dataSource = new ExampleDataSource();
   dataSource;
   styleOfModal:string;
   clickedElement:ImageRecord;
   errorMessage:string
-  thumbnail;
 
 isExpansionDetailRow = (i: number, row: ImageRecord) => row.hasOwnProperty('detailRow');
   expandedElement: any;
