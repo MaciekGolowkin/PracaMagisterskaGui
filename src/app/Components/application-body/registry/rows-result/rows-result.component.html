@@ -13,11 +13,6 @@
       <mat-cell *matCellDef="let element" (click)="cellClicked(element)"> {{element.name}} </mat-cell>
     </ng-container>
 
-    <!-- <ng-container matColumnDef="dateOfUpload">
-      <mat-header-cell *matHeaderCellDef> Data </mat-header-cell>
-      <mat-cell *matCellDef="let element" (click)="cellClicked(element)" > {{element.dateOfUpload | date:'mediumDate'}} </mat-cell>
-    </ng-container> -->
-
     <ng-container matColumnDef="expandedDetail">
       <mat-cell *matCellDef="let detail">
         <form>

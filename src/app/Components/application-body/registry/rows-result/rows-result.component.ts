@@ -1,14 +1,9 @@
 import { ViewChild,Component, OnInit, ElementRef, ɵConsole } from '@angular/core';
-import { DataSource } from '@angular/cdk/collections';
-import { from, Observable } from 'rxjs';
-import { of } from 'rxjs';
 import { animate, state, style, transition, trigger } from '@angular/animations';
 import { HttpClient } from '@angular/common/http';
-import { DomSanitizer } from '@angular/platform-browser';
-import { map } from 'rxjs/operators';
-import { ImageModel } from 'src/app/Models/ImageModel';
 import { ImageService } from 'src/app/Services/image.service';
 import { ImageRecord } from 'src/app/Models/ImageRecord';
+import { MatDataSource } from 'src/app/Models/MatDataSource';
 
 
 @Component({
@@ -27,12 +22,9 @@ export class RowsResultComponent implements OnInit {
   constructor(private http: HttpClient,private imageService: ImageService) { }
 
   async ngOnInit() {
-    
     this.listOfImages= await this.imageService.GetArrayOfImages();
-    this.listOfImages.forEach(element => this.rows.push(element, {detailRow: true, element }));
-    this.dataSource= new ExampleDataSource(this.listOfImages);
-    // console.log(this.rows);
-
+    this.dataSource= new MatDataSource(this.listOfImages);
+    // this.dataSource.conn
   }
   xa:any;
   listOfImages:ImageRecord[];
@@ -46,7 +38,7 @@ export class RowsResultComponent implements OnInit {
   errorMessage:string
   thumbnail;
 
-isExpansionDetailRow = (i: number, row: Object) => row.hasOwnProperty('detailRow');
+isExpansionDetailRow = (i: number, row: ImageRecord) => row.hasOwnProperty('detailRow');
   expandedElement: any;
   test() {
     console.log('test');
@@ -77,18 +69,5 @@ export interface ImageRecordTest {
   description?:string;
 }
 
-export class ExampleDataSource extends DataSource<any> {
-  constructor(private records: ImageRecord[]){
-    super();
-  }
-  /** Connect function called by the table to retrieve one stream containing the data to render. */
-  connect(): Observable<Element[]> {
-    const rows = [];
-    this.records.forEach(element => rows.push(element, {detailRow: true, element }));
-    return of(rows);
-  }
-
-  disconnect() { }
-}
 
 
