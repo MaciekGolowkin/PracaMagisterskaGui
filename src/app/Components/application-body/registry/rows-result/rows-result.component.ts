@@ -68,14 +68,6 @@ isExpansionDetailRow = (i: number, row: Object) => row.hasOwnProperty('detailRow
   deleteElement(id:number) {
     this.listOfImages.splice(id, 1);
   }
-
-  connect(): Observable<Element[]> {
-    const rows = [];
-    ELEMENT_DATA.forEach(element => rows.push(element, {detailRow: true, element }));
-    return of(rows);
-  }
-
-  
 }
 
 export interface ImageRecordTest {
