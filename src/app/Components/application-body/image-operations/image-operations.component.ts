@@ -48,11 +48,7 @@ export class ImageOperationsComponent implements OnInit {
       },
     );
   }
-
-  public uploadFinished=(event)=>{
-    this.response = event;
-  }
-
+  
   public onCreate = () => {
 
     let fileToUpload = <File>this.files[0];

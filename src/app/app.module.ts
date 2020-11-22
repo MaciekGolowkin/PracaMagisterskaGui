@@ -54,8 +54,6 @@ import { UserService } from './Services/Shared/user.service';
 import { ToastrModule } from 'ngx-toastr';
 import { AuthInterceptor } from './auth/auth.interceptor';
 import 'console.image';
-import { UploadComponent } from './Components/application-body/image-operations/upload/upload.component'
-
 
 @NgModule({
   declarations: [
@@ -68,8 +66,7 @@ import { UploadComponent } from './Components/application-body/image-operations/
     RowsResultComponent,
     ImageOperationsComponent,
     UserInfoComponent,
-    RegisterComponent,
-    UploadComponent
+    RegisterComponent
   ],
   imports: [
     BrowserModule,

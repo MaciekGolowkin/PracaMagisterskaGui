@@ -10,9 +10,6 @@
                     <label for="DescribeTextArea">Opis</label>
                     <textarea class="form-control" id="DescribeTextArea" rows="3" name="description" placeholder="Wpisz opis" [(ngModel)]="Description"></textarea>
                 </div>
-                
-                <app-upload (onUploadFinished)="uploadFinished($event)" ></app-upload>
-
                 <div class="form-group">
                     <h3>Wybierz obraz</h3>
                     <div class="form-group">
