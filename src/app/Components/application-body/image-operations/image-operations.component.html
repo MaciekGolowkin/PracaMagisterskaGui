@@ -13,11 +13,11 @@
                 
                 <app-upload (onUploadFinished)="uploadFinished($event)" ></app-upload>
 
-                <!-- <div class="form-group">
+                <div class="form-group">
                     <h3>Wybierz obraz</h3>
                     <div class="form-group">
 
-                        <input type="file" (change)="fileChangeEvent($event);" />
+                        <input #file type="file" (change)="fileChangeEvent($event,file.files);" />
                         <image-cropper [imageChangedEvent]="imageChangedEvent" [maintainAspectRatio]="false"
                             [aspectRatio]="4 / 3" format="png" (imageCropped)="imageCropped($event)"
                             (imageLoaded)="imageLoaded()" (cropperReady)="cropperReady()"
@@ -30,7 +30,7 @@
                     <div class="img-thumbnail" *ngIf="uploadedFilePath">
                         {{uploadedFilePath}}
                     </div>
-                </div> -->
+                </div>
 
 
 

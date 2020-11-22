@@ -33,6 +33,7 @@ export class ImageOperationsComponent implements OnInit {
     public Length: number;
     public Width: number;
     imgPath: string
+    files:any;
     userDetails;
 
   constructor(private http: HttpClient,private service:UserService,private toastr: ToastrService,private router: Router) { }
@@ -48,13 +49,14 @@ export class ImageOperationsComponent implements OnInit {
     );
   }
 
- 
-
   public uploadFinished=(event)=>{
     this.response = event;
   }
 
   public onCreate = () => {
+
+    let fileToUpload = <File>this.files[0];
+    const formData = new FormData();
     this.image = {
       Name: this.Name,
       Description: this.Description,
@@ -62,26 +64,29 @@ export class ImageOperationsComponent implements OnInit {
       Length: 2,
       Width: 2,
       UserName: this.userDetails.userName,
-      imgPath: this.response.dbPath
+      // imgPath: this.response.dbPath
     }
-    this.http.post('http://localhost:56741/api/upload/AddImage', this.image)
-    .subscribe(res => {
-    //   this.getUsers();
-    this.toastr.error('Pomyślnie dodano obraz');
-    this.router.navigateByUrl('/home');
+    var details = JSON.stringify(this.image);
+    formData.append('file', fileToUpload, fileToUpload.name);
+    formData.append('detailsOfImage', details);
+    this.http.post('http://localhost:56741/api/upload',formData, {reportProgress: true, observe: 'events'})
+    .subscribe(event => {
+      if (event.type === HttpEventType.UploadProgress)
+        var x= Math.round(100 * event.loaded / event.total);
+      else if (event.type === HttpEventType.Response) {
+      }
     });
   }
     
-
-
-
-  fileChangeEvent(event: any): void {
+  fileChangeEvent(event: any, files:any): void {
       this.imageChangedEvent = event;
+      this.files=files;
+      console.log(files);
   }
   imageCropped(event: ImageCroppedEvent) {
       this.croppedImage = event.base64;
 
-      console.log(this.croppedImage);
+      // console.log(this.croppedImage);
   }
   imageLoaded() {
       // show cropper

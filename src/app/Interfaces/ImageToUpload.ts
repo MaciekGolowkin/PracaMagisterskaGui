@@ -5,5 +5,5 @@ export interface ImageToUpload {
     TypeOfProcessing: string,
     Length: number,
     Width: number,
-    imgPath: string
+    imgPath?: string
 }

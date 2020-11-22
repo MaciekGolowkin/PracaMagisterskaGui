@@ -23,6 +23,7 @@ export class RowsResultComponent implements OnInit {
 
   async ngOnInit() {
     this.listOfImages= await this.imageService.GetArrayOfImages();
+    console.log(this.listOfImages);
     this.dataSource= new MatDataSource(this.listOfImages);
   }
   listOfImages:ImageRecord[];
