@@ -6,6 +6,7 @@ import { ImageToUpload } from 'src/app/Interfaces/ImageToUpload';
 import { ToastrService } from 'ngx-toastr';
 import { Router } from '@angular/router';
 import { ImageCropProp } from 'src/app/Models/ImageCropProp';
+import { Ng4LoadingSpinnerService } from 'ng4-loading-spinner';
 
 @Component({
   selector: 'app-image-operations',
@@ -88,12 +89,12 @@ export class ImageOperationsComponent implements OnInit {
     formData.append('cropproperites', croppedImage);
     formData.append('typeOfProcessing', this.selectedOption.code);
     this.http.post('http://localhost:56741/api/upload',formData, {reportProgress: true, observe: 'events'})
-    .subscribe(event => {
-      if (event.type === HttpEventType.UploadProgress)
-        var x= Math.round(100 * event.loaded / event.total);
-      else if (event.type === HttpEventType.Response) {
-      }
-    });
+    .subscribe(
+    (res)=>{
+      this.toastr.success("Obraz został przetworzony");
+      this.router.navigateByUrl("/home")
+    }
+    );
   }
     
   fileChangeEvent(event: any, files:any): void {
