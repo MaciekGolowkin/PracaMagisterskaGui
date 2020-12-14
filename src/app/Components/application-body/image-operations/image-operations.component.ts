@@ -5,6 +5,7 @@ import { UserService } from 'src/app/Services/Shared/user.service';
 import { ImageToUpload } from 'src/app/Interfaces/ImageToUpload';
 import { ToastrService } from 'ngx-toastr';
 import { Router } from '@angular/router';
+import { ImageCropProp } from 'src/app/Models/ImageCropProp';
 
 @Component({
   selector: 'app-image-operations',
@@ -22,19 +23,38 @@ export class ImageOperationsComponent implements OnInit {
   public response: {dbPath: ''};
 
   imageChangedEvent: any = '';
-  croppedImage: any = '';
-
+  croppedImage: ImageCropProp;
   image:ImageToUpload;
-
-    UserName: string;
-    public Name: string;
-    public Description: string;
-    public TypeOfProcessing: string;
-    public Length: number;
-    public Width: number;
-    imgPath: string
-    files:any;
-    userDetails;
+  UserName: string;
+  public Name: string;
+  public Description: string;
+  public TypeOfProcessing: string;
+  public Length: number;
+  public Width: number;
+  imgPath: string
+  files:any;
+  userDetails;
+  selectedOption;
+  typeOfProcessing = [{
+    id: '1',
+    name: 'Brak Operacji Przetwarzania',
+    code: 'Brak'
+   },
+   {
+    id: '2',
+    name: 'Progowanie',
+    code: 'Progowanie'
+   },
+   {
+    id: '3',
+    code: 'RedukcjaPoziomowSzarosci',
+    name: 'Redukcja Poziomów Szarości'
+   },
+   {
+    id: '4',
+    name: 'Metoda k-średnich',
+    code: 'KSrednich'
+   }]
 
   constructor(private http: HttpClient,private service:UserService,private toastr: ToastrService,private router: Router) { }
   ngOnInit() {
@@ -48,9 +68,8 @@ export class ImageOperationsComponent implements OnInit {
       },
     );
   }
-  
-  public onCreate = () => {
 
+  public onCreate = () => {
     let fileToUpload = <File>this.files[0];
     const formData = new FormData();
     this.image = {
@@ -63,8 +82,11 @@ export class ImageOperationsComponent implements OnInit {
       // imgPath: this.response.dbPath
     }
     var details = JSON.stringify(this.image);
+    var croppedImage = JSON.stringify(this.croppedImage);
     formData.append('file', fileToUpload, fileToUpload.name);
     formData.append('detailsOfImage', details);
+    formData.append('cropproperites', croppedImage);
+    formData.append('typeOfProcessing', this.selectedOption.code);
     this.http.post('http://localhost:56741/api/upload',formData, {reportProgress: true, observe: 'events'})
     .subscribe(event => {
       if (event.type === HttpEventType.UploadProgress)
@@ -77,14 +99,13 @@ export class ImageOperationsComponent implements OnInit {
   fileChangeEvent(event: any, files:any): void {
       this.imageChangedEvent = event;
       this.files=files;
-      console.log(files);
   }
   imageCropped(event: ImageCroppedEvent) {
-      this.croppedImage = event.base64;
-
-      // console.log(this.croppedImage);
+      this.croppedImage = event.cropperPosition;
+      console.log(this.croppedImage);
   }
   imageLoaded() {
+    this.isDone=true;
       // show cropper
   }
   cropperReady() {
@@ -92,5 +113,9 @@ export class ImageOperationsComponent implements OnInit {
   }
   loadImageFailed() {
       // show message
+  }
+
+  sprawdz(){
+    console.log("jestem w metodzie");
   }
 }

@@ -31,18 +31,18 @@
             <img id="img01" [src]="myImg.src" class="modal-content" #img01>
             <div #caption id="caption"></div>
           </div>
-          <img class="img-fluid" src="/assets/image.jpg" />
+          <img #myImg2 id="myImg2" (click)="imageOnClick()" src={{clickedElement?.processedImgPath}} alt="Snow" style="width:100%;max-width:300px">
+          <!-- <div #myModal id="myModal" class="modal" [style.display]="styleOfModal">
+            <span (click)="spanExitClick()" class="close">&times;</span>
+            <img id="img02" [src]="myImg2.src" class="modal-content" #img01>
+            <div #caption id="caption"></div>
+          </div> -->
           <div class="form-group">
-            <label for="inputState">Rodzaj przetwarzania</label>
-            <select id="inputState" class="form-control">
-              <option selected>Brak</option>
-              <option>Progowanie</option>
-              <option>Rozrost obszaru</option>
-            </select>
+            <label>Typ przetwarzania : {{clickedElement?.typeOfProcessing}}</label>
           </div>
           <div class="container">
             <div class="vertical-center">
-              <button routerLink="../home" class="btn btn-primary"> Modyfikuj </button>
+              <!-- <button routerLink="../home" class="btn btn-primary"> Modyfikuj </button> -->
               <button (click)="deleteElement(clickedElement?.position)" class="btn btn-danger"> Usuń </button>
             </div>
           </div>

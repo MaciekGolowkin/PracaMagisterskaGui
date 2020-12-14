@@ -19,40 +19,21 @@
                             [aspectRatio]="4 / 3" format="png" (imageCropped)="imageCropped($event)"
                             (imageLoaded)="imageLoaded()" (cropperReady)="cropperReady()"
                             (loadImageFailed)="loadImageFailed()"></image-cropper>
-
-                    </div>
-                    <div class="image-preview mb-3" *ngIf="previewUrl">
-                        <img [src]="previewUrl" height="300" />
-                    </div>
-                    <div class="img-thumbnail" *ngIf="uploadedFilePath">
-                        {{uploadedFilePath}}
                     </div>
                 </div>
-
-
-
                 <div *ngIf="isDone" class="form-group">
                     <label for="inputState">Rodzaj przetwarzania</label>
-                    <select id="inputState" class="form-control">
+                    <!-- <select id="inputState" class="form-control">
                         <option selected>Brak</option>
                         <option>Progowanie</option>
-                        <option>Rozrost obszaru</option>
+                        <option>Ucięcie poziomów szarości</option>
+                    </select> -->
+                    <select [(ngModel)]="selectedOption" name="inputStateName" id="inputState" class="form-control">
+                    <option click="sprawdz()" [ngValue]="type" *ngFor="let type of typeOfProcessing">{{type.name}}</option>
                     </select>
                 </div>
-                <!-- <button routerLink="../home" class="btn btn-primary"> Akceptuj </button> -->
                 <button type="button" class="btn btn-primary" (click)="onCreate()"> Akceptuj </button>
-
             </form>
-
-           
-
-
         </div>
     </div>
 </div>
-
-
- <!-- <input type="file" (change)="fileChangeEvent($event)" />
-            <image-cropper [imageChangedEvent]="imageChangedEvent" [maintainAspectRatio]="true" [aspectRatio]="4 / 3"
-                format="png" (imageCropped)="imageCropped($event)" (imageLoaded)="imageLoaded()"
-                (cropperReady)="cropperReady()" (loadImageFailed)="loadImageFailed()"></image-cropper> -->
