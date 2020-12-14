@@ -22,6 +22,11 @@ export class LoginComponent implements OnInit {
       this.router.navigateByUrl('/home');
   }
 
+  GoToRegistry(){
+    console.log("jestem w metodzie");
+    this.router.navigateByUrl("/register");
+  }
+
   onSubmit(form: NgForm) {
     this.service.login(form.value).subscribe(
       (res: any) => {

@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { ImageModel } from '../Models/ImageModel';
 import { ImageRecord } from '../Models/ImageRecord';
@@ -17,4 +17,11 @@ export class ImageService {
     (await listOfImages).forEach((item, i) => {item.position = i + 1;});
     return listOfImages;
   }
+
+  public DeleteImage(name)
+  {
+    console.log(name)
+    return this.http.delete<{}>('http://localhost:56741/api/Images/'+name);
+  }
+
 }

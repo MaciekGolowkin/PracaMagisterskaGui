@@ -2,7 +2,7 @@
 <div class="card">
     <h4 class="card-header">Logowanie</h4>
     <div class="card-body">
-        <form #form='ngForm' (submit)="onSubmit(form)">
+        <form class="col-sm" #form='ngForm' (submit)="onSubmit(form)">
             <div class="form-group">
                 <label >Nazwa użytkownika</label>
                 <input type="text" class="form-control" #UserName="ngModel" name="UserName" [(ngModel)]="formModel.UserName" required/>
@@ -14,10 +14,11 @@
             <div class="form-row">
                 <div class="col-lg-12">
                 <button type="submit" class="btn btn-primary float-left" [disabled]="form.invalid"> Zaloguj </button>
-                <button class="btn btn-primary float-right"> Rejestracja </button>
+                <button (click)="GoToRegistry()" class="btn btn-primary float-right"> Rejestracja </button>
             </div>
             </div>
         </form>
+        <div class="col-sm"></div>
     </div>
 </div>
 </div>

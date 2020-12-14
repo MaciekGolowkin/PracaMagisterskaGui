@@ -4,6 +4,8 @@ import { HttpClient } from '@angular/common/http';
 import { ImageService } from 'src/app/Services/image.service';
 import { ImageRecord } from 'src/app/Models/ImageRecord';
 import { MatDataSource } from 'src/app/Models/MatDataSource';
+import { ToastrService } from 'ngx-toastr';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -19,7 +21,7 @@ import { MatDataSource } from 'src/app/Models/MatDataSource';
   ]
 })
 export class RowsResultComponent implements OnInit {
-  constructor(private http: HttpClient,private imageService: ImageService) { }
+  constructor(private http: HttpClient,private imageService: ImageService, private toastr: ToastrService,private router: Router) { }
 
   async ngOnInit() {
     this.listOfImages= await this.imageService.GetArrayOfImages();
@@ -52,8 +54,16 @@ isExpansionDetailRow = (i: number, row: ImageRecord) => row.hasOwnProperty('deta
     this.clickedElement =  this.listOfImages.find(x => x.position == element.position);
   }
 
-  deleteElement(id:number) {
-    this.listOfImages.splice(id, 1);
+  deleteImage(element:ImageRecord){
+    console.log(element)
+    this.imageService.DeleteImage(element.name).subscribe(
+      (res)=>
+      {
+      this.toastr.success("Operacja wykonana","Pomyślnie usunięto rekord")
+      this.ngOnInit();
+      },
+      (err)=> console.log("error")
+    );
   }
 }
 
